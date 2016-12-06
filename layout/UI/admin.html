@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MOVIE FLIX</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Allerta+Stencil" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="responsive.css">
+</head>
+<!-- boxview function wil load the movie boxes -->
+<body onload="boxview()">
+	<script type="text/javascript" src="images.js"></script>
+	<div id="container3"></div>
+		<div class="container2"> <!-- class to hold the random poster in background modal view -->
+			<nav> <!-- navigation starts here -->
+				<div id="logo-div"><img src="http://i.imgur.com/s3OXU03.png" class="logo" ></div>
+				<div id="login-txt">MOVIE FLIX WELCOMES ADMIN</div>
+				<div id="login-div">
+					<a href=""><img class="button-login" src="images/2.png"></a>
+					
+				</div>
+			</nav> <!-- navigation bar ends here -->
+
+			<div id="body1"> <!-- search bar -->
+				<input class="search-bar" onclick="myFunction()" type="text" placeholder="Search for a movie by Type, Year, Genre">
+			</div>
+			
+			<div id="mainbody-admin"> 
+			<br /><br />
+				<label for="movie-id" id="label">ENTER MOVIE-ID: 
+				<input type="text" name="movie-id" id="admin-input">
+				<label for="movie-id" id="label">ENTER USER-ID:
+				<input type="text" name="user-id" id="admin-input" placeholder="ONLY VIEW AND DELETE"> 
+			<br /><br />
+				<button id="admin-btn">ADD/UPDATE</button><button id="admin-btn">DELETE</button><button id="admin-btn">VIEW BY ID</button>
+			<br /><br /><br />
+			<div id="box"></div> <!-- box view created in javascript -->
+		<!-- The Modal -->
+				<div id="myModal" class="modal">
+
+  					<!-- Modal content -->
+  					<div class="modal-content">
+    				<div class="modal-header">
+      					<span class="close">&#x2716;</span>
+      					<h2>ADD/UPDATE MOVIE DETAILS BELOW</h2>
+    				</div>
+    					<div class="modal-body">
+     
+							<form>
+								<input type="text" name="movieid" id="admin-input1" placeholder="ID">
+								<input type="text" name="movieid" id="admin-input1" placeholder="TITLE">
+								<br />
+	 							<input type="text" name="movieid" id="admin-input1" placeholder="Year">
+								<input type="text" name="movieid" id="admin-input1" placeholder="RATING">
+								<br />
+	 							<input type="text" name="movieid" id="admin-input1" placeholder="RELEASED">
+								<input type="text" name="movieid" id="admin-input1" placeholder="RUNTIME">
+								<br />
+								<input type="text" name="movieid" id="admin-input1" placeholder="GENRE">
+								<input type="text" name="movieid" id="admin-input1" placeholder="DIRECTOR">
+								<br />
+	
+								<input type="text" name="movieid" id="admin-input1" placeholder="WRITER">
+								<input type="text" name="movieid" id="admin-input1" placeholder="ACTOR">
+								<br />
+	 
+								<input type="text" name="movieid" id="admin-input1" placeholder="PLOT">
+								<input type="text" name="movieid" id="admin-input1" placeholder="LANGUAGE">
+								<br />
+	 
+								<input type="text" name="movieid" id="admin-input1" placeholder="AWARDS">
+								<input type="text" name="movieid" id="admin-input1" placeholder="POSTER">
+								<br />
+								<input type="text" name="movieid" id="admin-input1"  placeholder="METASCORE">
+								<!-- converting number value to STAR for rating -->
+								<div class="rating">
+									<span>&#9734;</span><span>&#9734;</span><span>&#9734;</span><span>&#9734;</span><span>&#9734;</span>
+								</div>
+								<br />
+	
+								<input type="text" name="movieid" id="admin-input1" placeholder="IMDB VOTES">
+	
+	 
+								<input type="text" name="movieid" id="admin-input1" placeholder="IMDB ID">
+								<br />
+	
+								<input type="text" name="movieid" id="admin-input1" placeholder="TYPE">
+								<input type="submit" name="add" placeholder="ADD" value="ADD" id="form-btn"> <input type="submit" name="update" placeholder="UPDATE" value="UPDATE" id="form-btn">
+							</form>
+    					</div>
+    
+  					</div>
+
+				</div>
+
+			</div>
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("admin-btn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>		
+
+</div>
+
+
+
+</body>
+</html>
