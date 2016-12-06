@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MOVIE FLIX</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Allerta+Stencil" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="responsive.css">
+
+</head>
+<!-- boxview function wil load the movie boxes -->
+<body onload="boxview()">
+	<script type="text/javascript" src="images.js"></script>
+	<!--[if IE]>
+<script type="text/javascript" src="images-IE.js"></script>
+   <![endif]-->
+	<div id="container3"></div>
+		<div class="container2"> <!-- class to hold the random poster in background modal view -->
+			<nav> <!-- navigation starts here -->
+				<div id="logo-div"><img src="http://i.imgur.com/s3OXU03.png" class="logo" ></div>
+				<div id="login-txt">MOVIE FLIX WELCOMES USER</div>
+				<div id="login-div">
+					<a href=""><img class="button-login" src="2.png"></a>
+					
+				</div>
+			</nav> <!-- navigation bar ends here -->
+
+			<div id="body1">
+				<input class="search-bar" onclick="myFunction()" type="text" placeholder="Search for a movie by Type, Year, Genre">
+				<button>TOP RATED MOVIES</button><button>TOP RATED TV SERIES</button><button>SORT BY RATINGS</button><button>SORT BY YEAR</button><button>SORT BY VOTES</button>
+			</div>
+			
+			<div id="mainbody"> <!-- main box view created by javascript currently doing only one box all movies will be implemented by ng-repeat angular -->
+			<div id="box">
+				<ul class="box-content effect">
+    				<p id="box-title"></p> <!-- title will be genrated by javascript -->
+    				<p id="box-year"></p>
+    					<div class="rating-box">
+							<span>&#9734;</span><span>&#9734;</span><span>&#9734;</span><span>&#9734;</span><span>&#9734;</span>
+						</div>
+    				<button id="box-content-btn">Click on image to Know more</button>
+					<img id="box-img" class="top" src="" alt="" onclick="openNav()" /> <!-- on click will open more details -->
+				</ul>
+			</div>
+			
+			<div id="mySidenav" class="sidenav"><!-- this will openon image click -->
+  				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+					<textarea placeholder="ADD Comment"></textarea>
+  							<br />
+  						<button id="comment-submit"></button>
+			</div>
+		</div>
+	</div>
+<!-- snackbar to appear for small timing on click of search bar -->
+<div id="snackbar">Dont wait search for you faviorate movie or series now.......</div>
+
+
+</body>
+</html>

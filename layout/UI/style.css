@@ -1,0 +1,617 @@
+/*Four pages are created css below:
+*** NAME ***							**** LINE NUMBER ****
+1. Common css for all pages   					6-107
+2. Landing page                                109 - 148
+3. Login Page                                  151 - 257
+4. Admin page                                  259 - 433
+5. Main Page                                   434 - 618
+*/
+/*common css for all pages*/
+body{
+	background-color: black;
+	height: 100vh;
+}
+#container3{
+	height: 800px;
+	position: absolute; /*making it appear in background*/
+	top: 0;
+	left: 0;
+	right: 0;
+
+}
+.container2{
+	position: absolute;
+	top: 0px; left:0px; right: 0;
+	margin-left: 80px;
+	margin-right: 80px;
+}
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -220px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+/*snackbar will show on search bar click event*/
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein { /*fading in of bar to appear for chrome and safari*/
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout { /*dissappear from screen safari and chrome*/
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+#logo-div{ /*floating div for logo*/
+	float: left;
+    width: 30%;
+   margin-left: 20px;
+	margin-top: 40px;
+}
+#login-txt{ /*welcome text to be on admin and main page*/
+	width: 40%;
+	text-align: center;
+	font-size: 30px;
+  font-family: 'Monoton', cursive;
+    float: left;
+    color: white;
+    margin-top: 80px;
+   
+}
+#login-div{ /*logout image css*/
+width: 20%;
+	float: right;
+	
+}
+.logo{ /*main logo*/
+	width: 40%;
+}
+
+#rel1{opacity: 0.2; /*for background random images*/
+		width: 80px;
+		height: 130px;
+		margin: 10px;
+		
+		}
+		#rel1:hover{
+opacity: 0.7;
+		}
+
+/*ENDS HERE*/
+
+/*Landing page css starts here*/
+#landing-img{        /*displaying logo in the center of screen*/
+ position: fixed;  
+ display: block;
+top: 40%; 
+left: 50%;
+margin-top: -9em;
+margin-left: -15em; 
+overflow-y: hidden;
+overflow-x: hidden;
+ 
+ }
+
+ .enter-here{
+ 	 cursor: pointer;
+     margin-left: 110px;
+     border: none;
+ 	background-color: transparent;
+  	padding: 20px;
+            -webkit-animation-duration: 1s; /*duration set for bounce animation*/
+            animation-duration: 1.5s; 
+            -webkit-animation-fill-mode: both; 
+            animation-fill-mode: both; 
+         }
+          /*bounce effect created on load of the page*/
+         @-webkit-keyframes bounce { 
+            0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);} 
+            40% {-webkit-transform: translateY(-30px);} 
+            60% {-webkit-transform: translateY(-15px);} 
+         } 
+         
+         @keyframes bounce { 
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 
+            40% {transform: translateY(-30px);} 
+            60% {transform: translateY(-15px);} 
+         }
+         
+         .bounce{ 
+            -webkit-animation-name: bounce; 
+            animation-name: bounce; 
+         }
+
+/*Ends here*/
+
+/*Login page css*/	
+
+.sidenav-login { /*this will display the login box in center*/
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+   background-color: transparent;
+	padding-top: 60px;
+    text-align:center;
+    overflow: hidden;
+}
+
+#modalview { /*create the modal view on sidenav*/
+       top: 30%; 
+        left: 40%;
+        margin-top: -9em;
+        margin-left: -15em; 
+        padding: 16px;
+        background-color: transparent;
+        margin: 0 auto;
+     	width: 40%;
+      	margin-top: 70px;
+        display: block;
+       
+   }
+   /*two tabs login and signup*/
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border-top: 4px solid orange;
+    background-color: #332200;
+    color: white;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Float the list items side by side */
+ul.tab li {float: left; }
+ ul.tab li:nth-child(2){float: right;}
+
+/* Style the links inside the list items */
+ul.tab li a {
+    display: inline-block;
+    color:orange;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 22px;
+    font-family: 'Monoton', cursive;
+}
+
+/* Change background color of links on hover */
+ul.tab li a:hover {
+    border-bottom: 3px solid orange;
+}
+#login{ /*Login tab will appear on page load*/
+   	display: block;
+   }
+   .menu{ /*signup tab will not appear untill clicked*/
+   	display: none;
+   }
+
+  .container{ /*box which contains all text box and button*/
+background-color: #332200;
+ border-bottom: 4px solid orange;
+ border-radius: 0 0 10px 10px;
+  padding: 60px;
+  }
+  .head{ /*header text css*/
+  	font-family: 'Allerta Stencil', sans-serif;
+  text-align: center;
+  padding: 10px; 
+ color: white;
+ border: 6px dotted orange;
+}
+#uname { /*the input for username and password*/
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#button { /*login/signup button*/
+    background-color: transparent;
+    border: 4px solid orange;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+    border-radius: 50px;
+   width: 50%
+}
+
+
+/*Ends here*/	
+
+/*Admin page CSS*/
+#body1{width: 100%; /*div for search bar*/
+			}
+		
+.search-bar{ /*search bar on admin and main page*/
+margin: 0 auto;
+width: 100%;
+  box-shadow: 0 4px 8px 0 white, 0 6px 20px 0 white;
+  margin-top: 20px;
+text-align: center;
+color: orange;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 4px;
+    font-size: 19px;
+    background-color: white;
+   padding: 12px 10px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+#mainbody-admin{ /*main body after the navigation menu*/
+
+	display: block;
+	height: 100%;
+	background-color: transparent;
+	margin-top: 100px;
+	border-top: 10px solid orange;
+	border-bottom: 10px solid orange;
+	 border-radius: 25px;
+}
+#admin-input1{
+
+	width: 40%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    text-align: center;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-left: 20px;
+}
+/*#admin-input{
+
+	width: 20%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    text-align: center;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}*/
+
+#label{
+	margin-left: 70px;
+color: white;
+font-size: 25px;
+	font-family: 'Allerta Stencil', sans-serif;
+}
+#admin-btn{ /*button css for add update delete view*/
+float: left;
+	padding: 10px 12px 10px 12px;
+  	text-align: center;
+  	text-decoration: none;
+  	border-bottom: 0;
+  	border-top: 0;
+  	border-left: 2px solid orange;
+  	border-right: 2px solid orange;
+  	margin-left: 180px;
+  	display: inline;
+  	margin-top: 30px;
+  	background-color: transparent;
+  	color: white;
+  	font-size: 15px;
+  	font-family: 'Allerta Stencil', sans-serif;
+  border-radius: 50px;
+
+}
+
+#box{ /*box for movie to displayed on admin and main page*/
+	display: none;
+	 width: 220px;
+	height: 308px;
+	margin: 20px;
+	 box-shadow: 0 5px 20px 3px grey;
+	
+	float: left;
+}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default *position: fixed; /* Stay in place */
+    margin-left: 20%;
+    
+    
+}
+
+/* Modal Content */
+.modal-content {
+    position: absolute;
+    background-color: #fefefe;
+   
+    padding: 0;
+    border: 1px solid #888;
+    width: 60%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.modal-header {
+    padding: 2px 16px;
+    background-color: orange;
+    color: white;
+    font-family: 'Allerta Stencil', sans-serif;
+}
+
+.modal-body {padding: 2px 16px;}
+
+#label-form{
+	margin-left: 20px;
+	align-items: left;
+}
+
+#form-btn{
+	padding: 5px 3px 5px 3px;
+	background-color: orange;
+	border: none;
+	color: white;
+	margin-left: 20px; 
+}
+
+.rating { /*seeing ratings in start form*/
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  width: 40%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    text-align: center;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-left: 20px;
+}
+.rating > span { 
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+  color: yellow;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute; /*fill in yellow color on hover*/
+}
+
+
+/*Ends here*/
+		
+/*Main page css starts here*/		
+.rating-box { /*seeing the int value in star*/
+
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  width: 80%;
+    float: left;
+    text-align: left;
+    display: inline-block;
+    }
+.rating-box > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+  color: yellow;
+}
+.rating-box > span:hover:before,
+.rating-box > span:hover ~ span:before { /*fill with yello color on hover*/
+   content: "\2605";
+   position: absolute;
+}
+
+#body1 button{ /*filter buttons*/
+	
+	float: left;
+	padding: 10px 12px 10px 12px;
+  	text-align: center;
+  	text-decoration: none;
+  	border-bottom: 0;
+  	border-top: 0;
+  	border-left: 2px solid orange;
+  	border-right: 2px solid orange;
+  	margin-left: 50px;
+  	display: inline;
+  	margin-top: 30px;
+  	background-color: transparent;
+  	color: white;
+  	font-size: 15px;
+  	font-family: 'Allerta Stencil', sans-serif;
+  border-radius: 50px;
+}
+#body1 button:hover{
+	border-bottom: 3px solid orange;
+  	border-top: 3px solid orange;
+  	border-left: 0;
+  	border-right: 0;
+  	transition: 0.2s ease;
+}
+
+#mainbody{ /*main boody where movies will appear*/
+	display: block;
+	min-height: 600px;
+	min-width: 80%;
+	background-color: transparent;
+	
+	margin-top: 100px;
+	border-top: 10px solid orange;
+	 border-radius: 25px;
+}
+.button-login { /*exit button*/
+    background-color: orange;
+    border: none;
+    margin-top: 80px;
+   width: 15%;
+  float: right;
+  margin-right: 30px;
+    text-decoration: none;
+    display: inline-block;
+    
+	box-shadow: 1px 1px 5px 5px orange;
+    cursor: pointer;
+    
+
+}
+.button-login:hover{
+	width: 16%;
+	border-radius: 50px;
+	box-shadow: 1px 1px 5px 5px orange;
+	transition: 0.6s;
+}
+
+.closebtn{ /*for more detail pop up close button*/
+text-decoration: none;
+color: orange;
+font-size: 100px;
+font-weight: 20%;
+
+}
+#box-title, #box-year{ /*display data from javascript on movie box*/
+font-family: 'Allerta Stencil', sans-serif;
+    text-align: left;
+    color: white;
+    font-size: 20px;
+ }
+
+#box-content-btn{
+  padding: 0 15px 12px 0;
+  border: none;
+  background-color: transparent;
+  color: white;
+  text-align: left;
+  font-size: 10px;
+ font-family: 'Allerta Stencil', sans-serif;
+}
+.box-content { /*to appear on image hover*/
+    position:relative;
+    width: 180px;
+    height: 290px;
+    float:left;
+   background-color:orange;
+}
+
+.effect img { /*image hover effect to slide down*/
+    position:absolute;
+    left:0;
+    bottom:0;
+    width: 220px;
+    height: 320px;
+    cursor:pointer;
+    margin:-12px 0;
+    -webkit-transition:bottom .3s ease-in-out;
+    -moz-transition:bottom .3s ease-in-out;
+    -o-transition:bottom .3s ease-in-out;
+    transition:bottom .3s ease-in-out
+}
+.effect img.top:hover {
+    bottom:-196px;
+    padding-top:100px
+}
+h2.zero,p.zero {
+    margin:0;
+    padding:0
+}
+
+#comment-submit{
+	border: 2px solid orange;
+padding: 4px 15px 4px 15px;
+
+}
+.sidenav {
+    height: 100%;
+    width: 0;
+ opacity: 0.9; /*opacity: 90%;*/
+    z-index: 1;
+  opacity: 1;
+position: fixed;
+top: 0;
+left: 0;
+    background-color: black;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+#mySidenav{
+	background-position: right;
+ background-blend-mode: screen;
+	background-repeat: no-repeat;
+	}
+
+
+.sidenav p{
+    font-family: 'Allerta Stencil', sans-serif;
+    text-decoration: none;
+    font-size: 15px;
+    margin-left: 10px;
+
+    color: white;
+    display: block;
+    text-align: left;
+    transition: 0.3s
+}
+
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+
+/*Ends here*/		
