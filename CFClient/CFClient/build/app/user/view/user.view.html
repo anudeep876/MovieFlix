@@ -1,0 +1,73 @@
+<div class="container2"> <!-- class to hold the random poster in background modal view -->
+    <nav> <!-- navigation starts here -->
+        <div id="logo-div"><img src="http://i.imgur.com/s3OXU03.png" class="logo" ></div>
+        <div id="login-txt">MOVIE FLIX WELCOMES USER</div>
+        <div id="login-div">
+            <a href=""><img class="button-login" src="images/2.png" ng-click="doLogout()" alt="logout"></a>
+        </div>
+    </nav> <!-- navigation bar ends here -->
+    <input class="search-bar" ng-model="searchInputs.movieSearch" name="movieSearch" type="text" placeholder="Search for a movie by Type, Year, Genre">
+    <div class="body1">
+        <button class="search-button" ng-click="doSearch()">Search</button>
+        <button class="search-button" ng-click="topRatedMovies()">TOP RATED MOVIES</button>
+        <button class="search-button" ng-click="topRatedTv()">TOP RATED TV SERIES</button>
+        <button class="search-button" ng-click="sortMoviesByRating()">SORT BY RATINGS</button>
+        <button class="search-button" ng-click="sortMoviesByVotes()">SORT BY YEAR</button>
+        <button class="search-button" ng-click="sortMoviesByYear()">SORT BY VOTES</button>
+    </div>
+</div>
+<div class="bodyContent">
+    <paginator
+        items="movies"
+        items-per-page="14"
+        pages-per-group="5" >
+
+        <div class="items clearfix">
+            <div ng-repeat="item in paginatedItems()" class="box">
+                <div class="box-content effect">
+                    <div id="box-title">{{item.title}}</div> <!-- title will be genrated by javascript -->
+                    <div id="box-year">{{item.year}}</div>
+                    <img id="box-img" class="top" ng-src="{{item.poster}}" alt="item.title" ng-click="openMovieDetailsPopup(item.id)" /> <!-- on click will open more details -->
+                </div>
+            </div>
+
+        </div>
+        <div class="navigation">
+            <div class="items-count">
+                {{firstItemNumber()}} - {{lastItemNumber()}} of {{itemsCount()}} items
+                <ul class="pagination pull-right" ng-show="itemsCount() > itemsPerPage">
+                    <li ng-disabled="!hasPrevPage()" ng-click="gotoPrevPage()"><a>&lt; Prev</a></li>
+                    <li ng-show="hasPrevGroup()" ng-click="gotoPrevGroup()"></li>
+                    <li ng-repeat="page in pagesInGroup()" ng-click="gotoPage(page.index)" ng-class="page.active"><a>{{page.index}}</a></li>
+                    <li ng-show="hasNextGroup()" ng-click="gotoNextGroup()"></li>
+                    <li ng-disabled="!hasNextPage()" ng-click="gotoNextPage()"><a>Next &gt;</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="mySidenav" class="sidenav" ng-style="{
+                    'background-image': 'url(' + currentItem.poster + ')'}" >
+            <p> Title: {{currentItem.title}}</p>
+            <p> Year: {{currentItem.year}}</p>
+            <p> Rated: {{currentItem.rated}}</p>
+            <p> Released: {{currentItem.released}}</p>
+            <p> Runtime: {{currentItem.runtime}}</p>
+            <p> Genre: {{currentItem.genre}}</p>
+            <p> Director: {{currentItem.director}}</p>
+            <p> Writer: {{currentItem.writer}}</p>
+            <p> Actors: {{currentItem.actors}}</p>
+            <p> Plot: {{currentItem.plot}}</p>
+            <p> Language: {{currentItem.language}}</p>
+            <p> Awards: {{currentItem.awards}}</p>
+            <p> Metascore: {{currentItem.metascore}}</p>
+            <p> Ratings: {{currentItem.imdbRating}}</p>
+            <p> Votes: {{currentItem.imdbVotes}}</p>
+            <p> Type: {{currentItem.type}}</p>
+            <textarea placeholder="Add Comment" rows="4" cols="50" ng-model="movieComment.message">{{movieComment.message}}</textarea>
+            <button id="comment-submit" ng-click="onMovieCommentBtnClick()">Add Comment</button>
+            <a href="javascript:void(0)" class="closebtn" ng-click="closeMovieDetailsPopup()">&times;</a>
+        </div>
+</div>
+<!-- snackbar to appear for small timing on click of search bar -->
+
+<!--<div id="snackbar">Dont wait search for you faviorate movie or series now.......</div>-->
