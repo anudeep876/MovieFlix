@@ -1,0 +1,34 @@
+<div class="container2"> <!-- body starts from here -->
+    <div class="sidenav-login"> <!-- side navbar will appear on click event of login button -->
+        <div id="modalview">
+            <ul class="tab"> <!-- tabs for login and sign up -->
+                <li><a href="javascript:void(0)" class="tablinks" ng-click="opentab($event, 'login')">LOGIN</a></li>
+                <li><a href="javascript:void(0)" class="tablinks" ng-click="opentab($event, 'signup')">SIGNUP</a></li>
+            </ul>
+
+            <div id="login" class="menu"> <!-- login menu starts here -->
+                <form>
+                    <div class="container">
+                        <h1 class="head">LOGIN</h1>
+                        <input type="text" id="userName" ng-model="formCtrl.login.username" placeholder="Username" class="loginFormItems"><br />
+                        <input type="password" id="password" ng-model="formCtrl.login.password" placeholder="Password" class="loginFormItems">
+                        <button id="loginButton" ng-click="doLogin()" class="loginFormButtons">LOGIN</button> 
+                    </div>
+                </form>
+            </div>
+
+            <div id="signup" class="menu"> <!-- signup menu starts here -->
+                <form>
+                    <div class="container">
+                        <h1 class="head">SIGN UP</h1>
+                        <input type="text" id="newUserName" ng-model="formCtrl.signup.username" placeholder="Username" class="loginFormItems"><br />
+                        <input type="password" id="newPassword" ng-model="formCtrl.signup.password" placeholder="Password" class="loginFormItems"><br />
+                        <input type="text" id="newemail" ng-model="formCtrl.signup.email" placeholder="Email" class="loginFormItems">
+                        <button id="signUpButton" ng-click="doSignup()" class="loginFormButtons">SIGN UP</button> 
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

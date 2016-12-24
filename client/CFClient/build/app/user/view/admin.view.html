@@ -1,0 +1,147 @@
+<div class="container2"> <!-- class to hold the random poster in background modal view -->
+    <nav> <!-- navigation starts here -->
+        <div id="logo-div"><img src="http://i.imgur.com/s3OXU03.png" class="logo" ></div>
+        <div id="login-txt">MOVIE FLIX WELCOMES ADMIN</div>
+        <div id="login-div">
+            <a href=""><img class="button-login" src="images/2.png" alt="logout"></a>
+        </div>
+    </nav> <!-- navigation bar ends here -->
+    <div class="mainbody-admin">
+        <label for="movie-id" class="label">Enter Movie ID: </label>  <input type="text" name="movie-id" id="movieId" ng-model="searchInputs.movieId" placeholder="Movie Id">
+        <label for="user-id" class="label">Enter User ID: </label> <input type="text" name="user-id" id="userId" ng-model="searchInputs.userId" placeholder="User Id"> 
+        <div class="body1">
+            <button class="admin-btn" ng-click="onMovieAddUpdateBtnClick()">ADD/UPDATE</button>
+            <button class="admin-btn" ng-click="onDeleteMovieButtonClick()">DELETE</button>
+            <button class="admin-btn" ng-click="onUserViewBtnClick()">VIEW BY ID</button>
+        </div>
+    </div>
+</div>
+<div class="bodyContent">
+    <paginator
+        items="movies"
+        items-per-page="14"
+        pages-per-group="5" >
+
+        <div class="items clearfix">
+            <div ng-repeat="item in paginatedItems()" class="box">
+                <div class="box-content effect">
+                    <div id="box-title">{{item.title}}</div> <!-- title will be genrated by javascript -->
+                    <div id="box-year">{{item.year}}</div>
+                    <img id="box-img" class="top" ng-src="{{item.poster}}" alt="item.title" ng-click="openMovieDetailsPopup(item.id)" /> <!-- on click will open more details -->
+                </div>
+            </div>
+
+        </div>
+        <div class="navigation">
+            <div class="items-count">
+                {{firstItemNumber()}} - {{lastItemNumber()}} of {{itemsCount()}} items
+                <ul class="pagination pull-right" ng-show="itemsCount() > itemsPerPage">
+                    <li ng-disabled="!hasPrevPage()" ng-click="gotoPrevPage()"><a>&lt; Prev</a></li>
+                    <li ng-show="hasPrevGroup()" ng-click="gotoPrevGroup()"></li>
+                    <li ng-repeat="page in pagesInGroup()" ng-click="gotoPage(page.index)" ng-class="page.active"><a>{{page.index}}</a></li>
+                    <li ng-show="hasNextGroup()" ng-click="gotoNextGroup()"></li>
+                    <li ng-disabled="!hasNextPage()" ng-click="gotoNextPage()"><a>Next &gt;</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="mySidenav" class="sidenav" ng-style="{
+                    'background-image': 'url(' + currentItem.poster + ')'}" >
+            <p> Title: {{currentItem.title}}</p>
+            <p> Year: {{currentItem.year}}</p>
+            <p> Rated: {{currentItem.rated}}</p>
+            <p> Released: {{currentItem.released}}</p>
+            <p> Runtime: {{currentItem.runtime}}</p>
+            <p> Genre: {{currentItem.genre}}</p>
+            <p> Director: {{currentItem.director}}</p>
+            <p> Writer: {{currentItem.writer}}</p>
+            <p> Actors: {{currentItem.actors}}</p>
+            <p> Plot: {{currentItem.plot}}</p>
+            <p> Language: {{currentItem.language}}</p>
+            <p> Awards: {{currentItem.awards}}</p>
+            <p> Metascore: {{currentItem.metascore}}</p>
+            <p> Ratings: {{currentItem.imdbRating}}</p>
+            <p> Votes: {{currentItem.imdbVotes}}</p>
+            <p> Type: {{currentItem.type}}</p>
+            <textarea placeholder="Add Comment" rows="4" cols="50" ng-model="movieComment.message">{{movieComment.message}}</textarea>
+            <button id="comment-submit" ng-click="onMovieCommentBtnClick()">Add Comment</button>
+            <a href="javascript:void(0)" class="closebtn" ng-click="closeMovieDetailsPopup()">&times;</a>
+        </div>
+
+        <div id="myModal" class="modal" >
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close" ng-click="closeAddUpdateMoviePopup()">&#x2716;</span>
+                    <h3>ADD/UPDATE MOVIE DETAILS BELOW</h3>
+                </div>
+                <div class="modal-body" style="text-align: center;">
+                    <input type="text" name="movieId" id="movie-id" ng-model="addUpdateMovie.id" ng-disabled="true" placeholder="ID" class="admin-input1">
+                    <input type="text" name="movieTitle" id="movieTitle" ng-model="addUpdateMovie.Title" placeholder="TITLE" class="admin-input1">
+                    <br />
+                    <input type="text" name="movieYear" id="movieYear" ng-model="addUpdateMovie.Year" placeholder="Year" class="admin-input1">
+                    <input type="text" name="movieRatings" id="movieRatings"  ng-model="addUpdateMovie.Ratings" placeholder="Rating" class="admin-input1">
+                    <br />
+                    <input type="text" name="movieReleased" id="movieReleased" ng-model="addUpdateMovie.Released" placeholder="Released" class="admin-input1">
+                    <input type="text" name="movieRuntime" id="movieRuntime" ng-model="addUpdateMovie.Runtime" placeholder="Runtime" class="admin-input1">
+                    <br />
+                    <input type="text" name="movieGenre" id="movieGenre" ng-model="addUpdateMovie.Genre" placeholder="Genre" class="admin-input1">
+                    <input type="text" name="movieDirector" id="movieDirector" ng-model="addUpdateMovie.Director" placeholder="DIRECTOR" class="admin-input1">
+                    <br />
+
+                    <input type="text" name="movieWriter" id="movieWriter" ng-model="addUpdateMovie.Writer" placeholder="Writer" class="admin-input1">
+                    <input type="text" name="movieActors" id="movieActors" ng-model="addUpdateMovie.Actors" placeholder="Actors" class="admin-input1">
+                    <br />
+
+                    <input type="text" name="moviePlot" id="moviePlot" ng-model="addUpdateMovie.Plot" placeholder="Plot" class="admin-input1">
+                    <input type="text" name="movieLanguage" id="movieLanguage" ng-model="addUpdateMovie.Language" placeholder="Language" class="admin-input1">
+                    <br />
+
+                    <input type="text" name="movieAwards" id="movieAwards" ng-model="addUpdateMovie.Awards"  placeholder="Awards" class="admin-input1">
+                    <input type="text" name="moviePoster" id="moviePoster"  ng-model="addUpdateMovie.Poster" placeholder="Poster" class="admin-input1">
+                    <br />
+                    <input type="text" name="movieMetascore" id="movieMetascore"  ng-model="addUpdateMovie.Metascore" placeholder="Metascore" class="admin-input1">
+                    <!-- converting number value to STAR for rating -->
+                    <div class="rating">
+                        <span>&#9734;</span><span>&#9734;</span><span>&#9734;</span><span>&#9734;</span><span>&#9734;</span>
+                    </div>
+                    <br />
+
+                    <input type="text" name="movieImdbVotes" id="movieImdbVotes" ng-model="addUpdateMovie.imdbVotes" placeholder="IMDB Votes" class="admin-input1">
+
+
+                    <input type="text" name="movieImdbID" id="movieImdbID" ng-model="addUpdateMovie.imdbID" placeholder="IMDB Id" class="admin-input1">
+                    <br />
+
+                    <input type="text" name="movieImdbRating" id="movieImdbRating" ng-model="addUpdateMovie.imdbRating" placeholder="IMDB Rating" class="admin-input1">
+                    <input type="text" name="movieType" id="movieType" ng-model="addUpdateMovie.Type" placeholder="Type" class="admin-input1">
+                    <br />
+                    <button type="submit" name="add" placeholder="Add" id="addBtn" ng-click="onAddMovieButtonClick()">Add</button>
+                    <button type="submit" name="update" placeholder="update" id="updateBtn" ng-click="onUpdateMovieButtonClick()">Update</button>
+                </div>
+
+            </div>
+
+        </div>
+        <div id="viewUserModal" class="modal" >
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close" ng-click="closeViewUserPopup()">&#x2716;</span>
+                    <h3>VIEW USER DETAILS BELOW</h3>
+                </div>
+                <div class="modal-body" style="text-align: center;">
+                    <input type="text" name="userId" id="userId" ng-model="viewUser.id" ng-disabled="true" class="admin-input1">
+                    <input type="text" name="userName" id="userName" ng-model="viewUser.userName" ng-disabled="true" class="admin-input1">
+                    <br />
+                    <input type="text" name="userEmail" id="userEmail" ng-model="viewUser.userEmail" ng-disabled="true" class="admin-input1">
+                    <input type="text" name="userAccountType" id="userAccountType"  ng-model="viewUser.userAccountType" ng-disabled="true" class="admin-input1">
+                </div>
+
+            </div>
+
+        </div>
+</div>
+<!-- snackbar to appear for small timing on click of search bar -->
+
+<!--<div id="snackbar">Dont wait search for you faviorate movie or series now.......</div>-->
