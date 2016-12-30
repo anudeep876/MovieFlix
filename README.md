@@ -1,3 +1,11 @@
+************************ MOVIE FLIX COMLETED FOLLOW INSTRUCTIoN BELOW ***************************
+
+npm install bower install
+gulp build
+gulp test
+grulp serve
+
+************************************************************************************************
 # movieflix-seed
 seed for the Full-Stack training project: movieflix
 
